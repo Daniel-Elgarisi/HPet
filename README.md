@@ -1,4 +1,4 @@
-# HPet1
+# HPet
 This application is based on 3 technologies:
 backend based on node.js:
    - to run this part node.js and npm are needed: https://nodejs.org/en/download
