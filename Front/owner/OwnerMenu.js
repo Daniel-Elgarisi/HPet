@@ -3,14 +3,12 @@ function nav(choice) {
     switch (choice) {
         case 1:
             res = "navigation/home.html"
-
             break;
         case 2:
             res = "../EditProfile/EditProfile.html"
-
             break;
         case 3:
-            res = "navigation/Emergency.html"
+            res = "navigation/Emergency/Emergency.html"
             break;
         case 4:
             res = "navigation/Appointments.html"
@@ -25,7 +23,8 @@ function nav(choice) {
             res = "navigation/References.html"
             break;
         case 8:
-            res = "navigation/PhotoAlbum.html"
+            let currentUser = sessionStorage.getItem("user")
+            res = `navigation/PhotoAlbum/PhotoAlbum${currentUser}.html`
             break;
         case 9:
             res = "navigation/Receipts.html"
