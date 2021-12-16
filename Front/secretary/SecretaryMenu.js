@@ -10,25 +10,31 @@ function nav(choice) {
 
             break;
         case 3:
-            res = "navigation/Emergency.html"
+            res = "navigation/schedule.html"
+
             break;
         case 4:
-            res = "navigation/Appointments.html"
+            res = "navigation/accountManagement.html"
+
             break;
         case 5:
-            res = "navigation/Summaries.html"
+            res = "navigation/teaMessage.html"
+
             break;
         case 6:
-            res = "navigation/lab.html"
+            res = "navigation/Vaccines.html"
+
             break;
         case 7:
-            res = "navigation/References.html"
+            res = "navigation/communication.html"
+
             break;
         case 8:
-            res = "navigation/PhotoAlbum.html"
+            res = "navigation/Reminder.html"
+
             break;
         case 9:
-            res = "navigation/Receipts.html"
+            res = "navigation/CustomerMessage.html"
             break;
         case 10:
             sessionStorage.setItem("user", null)
