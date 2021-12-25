@@ -23,7 +23,7 @@ function nav(choice) {
             res = "navigation/labResults.html"
             break;
         case 8:
-            res = "navigation/Approval_of_vaccination.html"
+            res = "navigation/Vaccnations/Vaccination.html"
             break;
         case 9:
             res = "navigation/Vaccines.html"

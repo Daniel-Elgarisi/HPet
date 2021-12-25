@@ -10,10 +10,10 @@ function nav(choice) {
 
             break;
         case 3:
-            res = "navigation/Emergency.html"
+            res = "navigation/Emergancy/Emergancy.html"
             break;
         case 4:
-            res = "navigation/Appointments.html"
+            res = "navigation/Appointment/Appointment.html"
             break;
         case 5:
             res = "navigation/Summaries.html"

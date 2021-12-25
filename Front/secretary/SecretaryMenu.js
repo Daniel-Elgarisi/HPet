@@ -10,15 +10,16 @@ function nav(choice) {
 
             break;
         case 3:
-            res = "navigation/schedule.html"
+            res = "navigation/Registration/Registration.html"
 
             break;
         case 4:
-            res = "navigation/accountManagement.html"
+            res = "navigation/pet registration/PetRegistration.html"
 
             break;
         case 5:
-            res = "navigation/teaMessage.html"
+            res = "navigation/DeletePet/DeletePet.html"
+
 
             break;
         case 6:
