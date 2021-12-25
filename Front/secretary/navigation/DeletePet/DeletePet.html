@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<head>
+  <link rel="stylesheet" href="DeletePet.css" type="text/css">
+</head>
+
+<body>
+  <div class="body-content">
+    <div class="delete">
+      <h1>מחיקת חיית מחמד</h1>
+      <form class="form" method="post" enctype="multipart/form-data" autocomplete="off">
+        <div class="alert alert-error"></div>
+        <input onfocusout="findOwner()" type="tel" id="Phone" name="Phone" placeholder="Pet owner phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required />
+        <input type="text" id="Pname" name="Pet name" placeholder="Pet name"required /><br>
+      </form>
+      <button onclick="deletePet()">delete</button><br>
+    </div>
+  </div>
+  <script src="DeletePet.js"></script>
+</body>
+
+</html>
