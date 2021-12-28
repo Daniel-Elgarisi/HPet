@@ -2,7 +2,7 @@ body
 {  
     margin: 0;  
     padding: 0;  
-    background-color:#ffffff;  
+    background-color:#d3bda0;  
     font-family: 'Century Gothic';  
 }  
 .update{  
@@ -11,7 +11,7 @@ body
         margin: auto;  
         margin: 20 0 0 500px;  
         padding: 20px;  
-        background: #cfaa834f;  
+        background: #ece6dea4;  
         border-radius: 50px ;  
         position: absolute;
         top: 15%;
