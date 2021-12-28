@@ -2,7 +2,7 @@ function nav(choice) {
     let res;
     switch (choice) {
         case 1:
-            res = "navigation/home.html"
+            res = "navigation/HomePage/home.html"
 
             break;
         case 2:
@@ -16,10 +16,10 @@ function nav(choice) {
             res = "navigation/Appointment/Appointment.html"
             break;
         case 5:
-            res = "navigation/Summaries.html"
+            res = "navigation/DeleteAppointment/DelAppointment.html"
             break;
-        case 6:
-            res = "navigation/lab.html"
+            case 6:
+            res = "navigation/Summaries.html"
             break;
         case 7:
             res = "navigation/References.html"

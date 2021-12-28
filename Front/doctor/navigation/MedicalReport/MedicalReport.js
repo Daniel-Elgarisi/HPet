@@ -1,28 +1,35 @@
+let phone = document.getElementById("Phone").value;
+let pname = document.getElementById("Pname").value;
+
+
 async function uploadReport() {
+    let phone = document.getElementById("Phone").value;
+    let pname = document.getElementById("Pname").value;
     let appointmentType = document.getElementById("AppType").value;
     let report = document.getElementById("Report").value;
     //fetch
     //call for POST to the url:
-    let response = await fetch('http://localhost:5000/user/uploadReport', {
+    let response = await fetch(`http://localhost:5000/reports/uploadReport`,{
       //post
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      //this is the stuff we refer to as: req.body in the backend!!!!!
+    //   this is the stuff we refer to as: req.body in the backend!!!!!
       body: JSON.stringify({
-          appointmentType: appointmentType,
-          report: report
+        phone_number: phone, 
+        name: pname,
+        appointment_type: appointmentType,
+        report: report
       })
     })
-    //get data from backend response as json!
+    //get data from backend response as jsson!
     let body = await response.json()
   
-    alert(body.message)
+    console.log(body.message);
   }
 
 async function findPetIdByName() {
-    let pname = document.getElementById("Pname").value;
 
     //fetch
     //call for POST to the url:
@@ -44,7 +51,6 @@ async function findPetIdByName() {
 
 
 async function findOwner() {
-    let phone = document.getElementById("Phone").value;
 
     //fetch
     //call for POST to the url:
@@ -61,12 +67,12 @@ async function findOwner() {
     })
     //get data from backend response as json!
     ownerId = await response.json()
-    let x = document.getElementById("Pname");
-    if (ownerId.data) {
-        x.removeAttribute("disabled");
-    }
-    else{
-        x.setAttribute("disabled", "");
-    }
-    console.log(ownerId);
+    // let x = document.getElementById("Pname");
+    // if (ownerId.data) {
+    //     x.removeAttribute("disabled");
+    // }
+    // else{
+    //     x.setAttribute("disabled", "");
+    // }
+    // console.log(ownerId);
 }
