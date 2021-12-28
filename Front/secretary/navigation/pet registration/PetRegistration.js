@@ -1,16 +1,16 @@
 async function petRegister() {
 
   let phone = document.getElementById("Phone").value;
-  let phone = document.getElementById("petName").value;
-  let phone = document.getElementById("Breed").value;
-  let phone = document.getElementById("ChipNumber").value;
-  let phone = document.getElementById("PetBirthday").value;
-  let phone = document.getElementById("Gender").value;
-  let phone = document.getElementById("Type").value;
+  let pname = document.getElementById("PetName").value;
+  let breed = document.getElementById("Breed").value;
+  let chip = document.getElementById("ChipNumber").value;
+  let pbirthday = document.getElementById("PetBirthday").value;
+  let gender = document.getElementById("Gender").value;
+  let type = document.getElementById("Type").value;
 
   //fetch
   //call for POST to the url:
-  let response = await fetch('http://localhost:5000/user/petRegister', {
+  let response = await fetch('http://localhost:5000/pets/petRegister', {
     //post
     method: 'POST',
     headers: {
@@ -19,10 +19,10 @@ async function petRegister() {
     //this is the stuff we refer to as: req.body in the backend!!!!! ------ לבדוק עם דניאל מה לעשות
     body: JSON.stringify({
       phone: phone,
-      name: name,
+      name: pname,
       breed: breed,
-      chip_number: chip_number,
-      birthday: birthday,
+      chip_number: chip,
+      birthday: pbirthday,
       gender: gender,
       type: type
     })
@@ -32,3 +32,4 @@ async function petRegister() {
 
   alert(body.message)
 }
+
