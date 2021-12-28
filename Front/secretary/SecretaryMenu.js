@@ -19,15 +19,13 @@ function nav(choice) {
             break;
         case 5:
             res = "navigation/DeletePet/DeletePet.html"
-
-
             break;
         case 6:
             res = "navigation/Vaccines.html"
 
             break;
         case 7:
-            res = "navigation/communication.html"
+            res = "navigation/communication/communication.html"
 
             break;
         case 8:
