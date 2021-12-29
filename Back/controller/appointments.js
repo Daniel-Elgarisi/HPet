@@ -33,7 +33,7 @@ async function MakeApp(req, response) {
     client.query(sql, vars, (err, res) => {
         if (err) {
             console.log(err);
-            return response.status(400).json({ message: "error" });
+            return response.status(400).json({ message: "error" });   
         } else {
             return response.status(200).json({ message: "appointments is created successfully" });
         }
