@@ -7,7 +7,6 @@ router.delete('/', DeleteApp);
 router.get('/day', getAppOfDay);
 router.get('/month', getAppOfMonth);
 
-
 async function MakeApp(req, response) {
 
     let user = await client.query("select * from users where phone_number=$1", [req.body.phone_number]);
@@ -42,3 +41,123 @@ async function MakeApp(req, response) {
 
 
 }
+
+async function DeleteApp(req, response) {
+
+    let user = await client.query("select * from users where phone_number=$1", [req.body.phonenumber]);
+    if (user.rowCount == 0) {
+        return response.status(400).json({ message: "user is not found" });
+    }
+
+    let userpets = await client.query('select * from pets where owner_id=$1 AND name=$2', [user.rows[0].id, req.body.petname]);
+    if (userpets.rowCount == 0) {
+        return response.status(400).json({ message: "pet is not found" });
+    }
+
+    let t = await client.query('select * from appointments where owner_id=$1 AND pet_id=$2 AND time=$3 AND date=$4', [user.rows[0].id, userpets.rows[0].id, req.body.time, req.body.date]);
+    if (userpets.rowCount == 0) {
+        return response.status(400).json({ message: "appointment is not found" });
+    }
+
+    let sql = 'delete from appointments where owner_id=$1 AND pet_id=$2 AND time=$3 AND date=$4';
+    let vars = [user.rows[0].id, userpets.rows[0].id, t.rows[0].time, t.rows[0].date];
+
+    client.query(sql, vars, (err, res) => {
+        if (err) {
+            console.log(err);
+            return response.status(400).json({ message: "error" });
+        } else {
+            return response.status(200).json({ message: "deleted" });
+        }
+    });
+}
+
+async function getAppOfDay(req, response) {
+
+    let appoint = await client.query('select * from appointments where date=$1', [req.body.date]);
+    if (appoint.rowCount == 0) {
+        return response.status(400).json({ message: "appointments is not found" });
+    }
+
+    let userpets = await client.query('select name from pets where owner_id=$1 AND id=$2', [appoint.rows[0].owner_id, appoint.rows[0].pet_id]);
+    console.log(userpets.rows);
+    if (userpets.rowCount == 0) {
+        return response.status(400).json({ message: "pet is not found" });
+    }
+
+    let user = await client.query('select first_name from users where id=$1', [appoint.rows[0].owner_id]);
+    console.log(user.rows);
+    if (user.rowCount == 0) {
+        return response.status(400).json({ message: "user is not found" });
+    }
+
+    let sql = 'select * from appointments where date=$1';
+    let vars = [appoint.rows[0].date];
+    client.query(sql, vars, (err, res) => {
+        if (err) {
+            console.log(err);
+            return response.status(400).json({ message: "error" });
+        } else {
+            let array = [];
+            res.rows.map((report) => {
+                let obj = {
+                    type: report.appointment_type,
+                    date: report.date,
+                    time: report.time,
+                    name: user.rows[0].first_name,
+                    name_pet: userpets.rows[0].name,
+                    phone_number: report.phone_number
+                }
+                array.push(obj)
+            })
+            return response.status(200).json(array);
+        }
+    });
+}
+
+//׳₪׳•׳ ׳§׳¦׳™׳” ׳©׳׳ ׳¢׳•׳‘׳“׳× ׳¢׳“׳™׳™׳
+async function getAppOfMonth(req, response) {
+    let appoint = await client.query('select * from appointments');
+    console.log(appoint.rows);
+    if (appoint.rowCount == 0) {
+        return response.status(400).json({ message: "appointments is not found" });
+    }
+
+    let userpets = await client.query('select name from pets where owner_id=$1 AND id=$2', [appoint.rows[0].owner_id, appoint.rows[0].pet_id]);
+    console.log(userpets.rows);
+    if (userpets.rowCount == 0) {
+        return response.status(400).json({ message: "pet is not found" });
+    }
+
+    let user = await client.query('select first_name from users where id=$1', [appoint.rows[0].owner_id]);
+    console.log(user.rows);
+    if (user.rowCount == 0) {
+        return response.status(400).json({ message: "user is not found" });
+    }
+
+    let sql = 'select * from appointments';
+    let vars = [appoint.rows[0].date];
+    client.query(sql, vars, (err, res) => {
+        if (err) {
+            console.log(err);
+            return response.status(400).json({ message: "error" });
+        } else {
+            let array = [];
+            res.rows.map((report) => {
+                let obj = {
+                    type: report.appointment_type,
+                    date: report.date,
+                    time: report.time,
+                    name: user.rows[0].first_name,
+                    name_pet: userpets.rows[0].name,
+                    phone_number: report.phone_number
+                }
+                array.push(obj)
+            })
+            return response.status(200).json(array);
+        }
+    });
+
+}
+
+module.exports = router;
