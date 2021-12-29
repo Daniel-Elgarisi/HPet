@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "sql-unittest": "^1.1.2"
+  },
+  "devDependencies": {
+    "jest": "^27.4.5",
+    "mocha": "^9.1.3"
+  }
+}
