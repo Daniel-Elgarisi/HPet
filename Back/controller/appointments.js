@@ -73,4 +73,24 @@ async function DeleteApp(req, response) {
     });
 }
 
+
+async function getAppOfDay(req, response) {
+
+    let appoint = await client.query('select * from appointments where date=$1', [req.body.date]);
+    if (appoint.rowCount == 0) {
+        return response.status(400).json({ message: "appointments is not found" });
+    }
+
+    let userpets = await client.query('select name from pets where owner_id=$1 AND id=$2', [appoint.rows[0].owner_id, appoint.rows[0].pet_id]);
+    console.log(userpets.rows);
+    if (userpets.rowCount == 0) {
+        return response.status(400).json({ message: "pet is not found" });
+    }
+
+    let user = await client.query('select first_name from users where id=$1', [appoint.rows[0].owner_id]);
+    console.log(user.rows);
+    if (user.rowCount == 0) {
+        return response.status(400).json({ message: "user is not found" });
+    }
+
 module.exports = router;
