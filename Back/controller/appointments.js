@@ -92,5 +92,27 @@ async function getAppOfDay(req, response) {
     if (user.rowCount == 0) {
         return response.status(400).json({ message: "user is not found" });
     }
-
+ let sql = 'select * from appointments where date=$1';
+    let vars = [appoint.rows[0].date];
+    client.query(sql, vars, (err, res) => {
+        if (err) {
+            console.log(err);
+            return response.status(400).json({ message: "error" });
+        } else {
+            let array = [];
+            res.rows.map((report) => {
+                let obj = {
+                    type: report.appointment_type,
+                    date: report.date,
+                    time: report.time,
+                    name: user.rows[0].first_name,
+                    name_pet: userpets.rows[0].name,
+                    phone_number: report.phone_number
+                }
+                array.push(obj)
+            })
+            return response.status(200).json(array);
+        }
+    });
+}
 module.exports = router;
