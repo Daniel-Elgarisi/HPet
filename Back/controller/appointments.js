@@ -42,6 +42,7 @@ async function MakeApp(req, response) {
 
 }
 
+//deleteapp
 async function DeleteApp(req, response) {
 
     let user = await client.query("select * from users where phone_number=$1", [req.body.phonenumber]);
