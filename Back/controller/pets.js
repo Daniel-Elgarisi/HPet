@@ -44,6 +44,31 @@ async function getAllPetsByUser(req, response) {
     });
 }
 
+async function getPet(req, response) {
+
+    let user = await client.query("select * from users where phone_number=$1", [req.params.phonenumber]);
+    if (user.rows.length == 0) {
+        return response.status(400).json({ message: "user is not found" });
+    }
+    let userpets = await client.query('select * from pets where owner_id=$1 AND name=$2', [user.rows[0].id, req.params.petname]);
+    if (userpets.rowCount == 0) {
+        return response.status(400).json({ message: "pet is not found" });
+    }
+
+    let sql = 'select * from pets where owner_id=$1 AND name=$2';
+
+    client.query(sql, [user.rows[0].id, req.params.petname], (err, res) => {
+        if (!err) {
+            response.status(200).json(res.rows)
+        } else {
+            console.log(err);
+            response.status(400).json({ message: "Somting went wrong" });
+        }
+    });
+
+
+}
+
 // router.get('/pets', (req, res) => {
 //     let allpets = []
 //     for (let i = 0; i < pets.length; i++) {
