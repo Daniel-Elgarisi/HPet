@@ -55,26 +55,6 @@ router.post('/findPetIdByName', (req, response) => {
         })
 })
 
-router.delete('/deletePet', (req, response) => {
-    client.query(`DELETE FROM pets WHERE name=$1 and owner_id=$2`, [req.body.pname, req.body.ownerId],
-        (err, res) => {
-            if (err) {
-                console.log(err);
-                response.status(400).contentType('application/json').json({
-                    "message": "delete failed!"
-                })
-            }
-            else {
-                console.log("owner: ", req.body.ownerId);
-                console.log(res);
-                response.status(200).contentType('application/json').json({
-                    "message": "delete ok!"
-                })
-            }
-
-        }
-    )
-})
 
 
 module.exports = router;
