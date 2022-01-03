@@ -1,7 +1,14 @@
-const { response } = require('express');
+const client = require('../db/db')
 const express = require('express');
-const client = require('../db/db');
+const joi = require('joi');
+const { checkPreferences } = require('joi');
 const router = express.Router();
+
+router.get('/', getAllPets);
+router.get('/byuser/:phonenumber', getAllPetsByUser);
+router.get('/petbyuser/:phonenumber/:petname', getPet);
+router.post('/', addPet);
+router.get('/:phonenumber/:petname', UpdateStatusePet);
 
 router.get('/pets', (req, res) => {
     let allpets = []
