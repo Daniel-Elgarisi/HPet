@@ -25,6 +25,25 @@ async function getAllPets(req, response) {
 
 }
 
+async function getAllPetsByUser(req, response) {
+
+    let user = await client.query("select * from users where phone_number=$1", [req.params.phonenumber]);
+    if (user.rows.length == 0) {
+        return response.status(400).json({ message: "user is not found" });
+    }
+
+    let sql = 'select * from pets where owner_id=$1';
+
+    client.query(sql, [user.rows[0].id], (err, res) => {
+        if (!err) {
+            response.json(res.rows)
+        } else {
+            console.log(err);
+            response.status(400).json({ message: "Somting went wrong" });
+        }
+    });
+}
+
 // router.get('/pets', (req, res) => {
 //     let allpets = []
 //     for (let i = 0; i < pets.length; i++) {
