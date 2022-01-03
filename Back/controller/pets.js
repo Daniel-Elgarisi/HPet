@@ -69,6 +69,48 @@ async function getPet(req, response) {
 
 }
 
+async function addPet(req, response) {
+
+    _petObj = req.body;
+
+    let user = await client.query("select * from users where phone_number=$1", [req.body.phone_number]);
+    if (user.rowCount == 0) {
+        return response.status(400).json({ message: "user is not found" });
+    }
+
+    let userpets = await client.query('select * from pets where owner_id=$1 AND name=$2', [user.rows[0].id, req.body.name]);
+    if (userpets.rowCount > 0) {
+        return response.status(400).json({ message: "pet is exist" });
+    }
+
+    let sql = `INSERT INTO pets(name, breed, chip_number, owner_id, birthday, gender, type) 
+            VALUES($1, $2, $3, $4, $5, $6, $7)`;
+
+    let values = [
+        _petObj.name,
+        _petObj.breed,
+        _petObj.chip_number,
+        user.rows[0].id,
+        _petObj.birthday,
+        _petObj.gender,
+        _petObj.type
+    ];
+
+    client.query(sql, values, (err, res) => {
+        if (err) {
+            console.log(err);
+            return response.status(400).json({ message: "Something went wrong" });
+        } else {
+            if (res.rowCount > 0) {
+                return response.status(200).json({ message: "New pet created successfully" });
+            } else {
+                return response.status(400).json({ message: "Something went wrong" });
+            }
+        }
+    });
+
+}
+
 // router.get('/pets', (req, res) => {
 //     let allpets = []
 //     for (let i = 0; i < pets.length; i++) {
