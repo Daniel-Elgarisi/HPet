@@ -4,3 +4,33 @@ const router = express.Router();
 
 router.get('/:phonenumber/:petname', getVaccines);
 router.post('/', updateVaccines);
+
+async function getVaccines(req, response) {
+
+    let user = await client.query("select * from users where phone_number=$1", [req.params.phonenumber]);
+    if (user.rowCount == 0) {
+        return response.status(400).json({ message: "user is not found" });
+    }
+
+    let userpets = await client.query('select * from pets where owner_id=$1 AND name=$2', [user.rows[0].id, req.params.petname]);
+    if (userpets.rowCount == 0) {
+        return response.status(400).json({ message: "pet is not found" });
+    }
+
+    let sql = 'select * from vaccantions where pet_id=$1';
+    let vars = [userpets.rows[0].id];
+
+    client.query(sql, vars, (err, res) => {
+        if (err) {
+            console.log(err);
+            return response.status(400).json({ message: "error" });
+        } else {
+            let array = [];
+            res.rows.map((vac) => {
+                let obj = { vaccine_type: vac.vaccine_type, date: vac.date.toLocaleDateString('en-GB').split('').join('') }
+                array.push(obj)
+            })
+            return response.status(200).json(array);
+        }
+    });
+}
