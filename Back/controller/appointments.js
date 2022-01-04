@@ -122,3 +122,24 @@ let array = [];
     console.log(array);
     return response.status(200).json(array);
 };
+
+async function getAppOfMonth(req, response) {
+    let sql = 'select * from appointments';
+    let appoint = await client.query(sql);
+    if (appoint.rowCount == 0) {
+        return response.status(400).json({ message: "appointments is not found" });
+    }
+    let len = appoint.rows.length
+    for (let index = 0; index < len; index++) {
+        let petName = await client.query('select name from pets where owner_id=$1 AND id=$2', [appoint.rows[index].owner_id, appoint.rows[index].pet_id]);
+        if (petName.rowCount == 0) {
+            return response.status(400).json({ message: "pet is not found" });
+        }
+
+        let user = await client.query('select first_name from users where id=$1', [appoint.rows[index].owner_id]);
+        if (user.rowCount == 0) {
+            return response.status(400).json({ message: "user is not found" });
+        }
+        appoint.rows[index].pet_id = petName.rows[0].name
+        appoint.rows[index].owner_id = user.rows[0].first_name
+    }
