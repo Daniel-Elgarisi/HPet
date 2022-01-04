@@ -6,18 +6,19 @@ router.post('/register', addUser);
 router.post('/login', login);
 router.put('/update', updateUser);
 
-router.post('/login', (req, response) => {
-    let name;
-    let Role
+async function login(req, response) {
+
     client.query('select * from users where user_name = $1', [req.body.username], (err, res) => {
+
         if (res && res.rows[0]) {
             if (varifyLogin(res.rows[0].user_name, res.rows[0].password, req.body.username, req.body.password)) {
+
                 response.status(200).contentType('application/json').json({
                     "message": "login ok!",
                     "data": {
                         username: res.rows[0].user_name,
                         role: res.rows[0].role
-                    }
+                    },
                 })
             }
             else {
@@ -32,7 +33,7 @@ router.post('/login', (req, response) => {
             })
         }
     })
-})
+}
 
 
 router.put('/update', (req, response) => {
