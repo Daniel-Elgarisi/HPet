@@ -54,34 +54,38 @@ router.put('/update', (req, response) => {
     )
 })
 
-router.post('/register', (req, response) => {
-    client.query(`INSERT into users (user_name, password, first_name, last_name, email, phone_number, role) 
-                VALUES($1, $2, $3, $4, $5, $6, $7)`,
-        [req.body.username, req.body.pass, req.body.name, req.body.lname, req.body.email, req.body.phone, req.body.role],
-        (err, res) => {
-            if (err) {
-                if (err.code == 23505) {
-                    console.log(err)
-                    response.status(400).contentType('application/json').json({
-                        "message": "username already exist!"
-                    })
-                }
-                else {
-                    console.log(err)
-                    response.status(400).contentType('application/json').json({
-                        "message": "register failed!"
-                    })
-                }
-            }
-            else {
-                response.status(200).contentType('application/json').json({
-                    "message": "register ok!"
-                })
-            }
+async function addUser(req, response) {
 
+    _userObj = req.body;
+
+    let sql = `INSERT INTO users(user_name, password, first_name, last_name, email, phone_number, role) 
+            VALUES($1,$2, $3, $4, $5, $6, $7)`;
+
+    let values = [
+        _userObj.user_name,
+        _userObj.password,
+        _userObj.first_name,
+        _userObj.last_name,
+        _userObj.email,
+        _userObj.phone_number,
+        _userObj.role,
+    ];
+
+    client.query(sql, values, (err, res) => {
+        if (err) {
+            console.log(err);
+            return response.status(400).json({ message: "Existing username or existing email or existing cell phone number" });
+        } else {
+            if (res.rowCount > 0) {
+                return response.json({ message: "New user created successfully" });
+            } else {
+                return response.status(400).json({ message: "Something went wrong" });
+            }
         }
-    )
-})
+    });
+
+}
+
 
 router.post('/getUserByPhone', (req, response) => {
     client.query(`SELECT id FROM users WHERE phone_number=$1`, [req.body.phone], (err, res) => {
