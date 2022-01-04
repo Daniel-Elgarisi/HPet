@@ -94,3 +94,31 @@ async function getAppOfDay(req, response) {
         appoint.rows[index].pet_id = petName.rows[0].name
         appoint.rows[index].owner_id = user.rows[0].first_name
     }
+let array = [];
+    appoint.rows.map((row) => {
+        let date = row.time.toLocaleDateString()
+        let hour = row.time.getHours()
+        hour = `${hour}`
+        let minutes = row.time.getMinutes()
+        minutes = `${minutes}`
+        if (hour.length == 1)
+            hour = "0" + hour
+        if (minutes.length == 1)
+            minutes = "0" + minutes
+        let result = date + " " + hour + ":" + minutes
+        let obj = {
+            name: row.owner_id,
+            phone_number: row.phone_number,
+            name_pet: row.pet_id,
+            type: row.appointment_type,
+            time: result,
+            date: row.time
+        }
+        array.push(obj)
+    })
+    array = array.sort(function (a, b) {
+        return a.date - b.date
+    });
+    console.log(array);
+    return response.status(200).json(array);
+};
