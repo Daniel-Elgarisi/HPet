@@ -2,12 +2,9 @@ const client = require('../db/db')
 const express = require('express');
 const router = express.Router();
 
-function varifyLogin(dbUsername, dbPassword, username, password) {
-    if (dbUsername == username && dbPassword == password) {
-        return true;
-    }
-    return false;
-}
+router.post('/register', addUser);
+router.post('/login', login);
+router.put('/update', updateUser);
 
 router.post('/login', (req, response) => {
     let name;
