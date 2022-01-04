@@ -124,6 +124,11 @@ router.post('/getUserByPhone', (req, response) => {
     })
 })
 
-
+function varifyLogin(dbUsername, dbPassword, username, password) {
+    if (dbUsername == username && dbPassword == password) {
+        return true;
+    }
+    return false;
+}
 
 module.exports = { router, varifyLogin } 
