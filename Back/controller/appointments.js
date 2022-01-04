@@ -75,44 +75,22 @@ async function DeleteApp(req, response) {
 
 
 async function getAppOfDay(req, response) {
-
-    let appoint = await client.query('select * from appointments where date=$1', [req.body.date]);
+    let sql = "select * from appointments WHERE time>CURRENT_TIMESTAMP - interval '1' day AND time <CURRENT_TIMESTAMP + interval '1' day ";
+    let appoint = await client.query(sql);
     if (appoint.rowCount == 0) {
         return response.status(400).json({ message: "appointments is not found" });
     }
-
-    let userpets = await client.query('select name from pets where owner_id=$1 AND id=$2', [appoint.rows[0].owner_id, appoint.rows[0].pet_id]);
-    console.log(userpets.rows);
-    if (userpets.rowCount == 0) {
-        return response.status(400).json({ message: "pet is not found" });
-    }
-
-    let user = await client.query('select first_name from users where id=$1', [appoint.rows[0].owner_id]);
-    console.log(user.rows);
-    if (user.rowCount == 0) {
-        return response.status(400).json({ message: "user is not found" });
-    }
- let sql = 'select * from appointments where date=$1';
-    let vars = [appoint.rows[0].date];
-    client.query(sql, vars, (err, res) => {
-        if (err) {
-            console.log(err);
-            return response.status(400).json({ message: "error" });
-        } else {
-            let array = [];
-            res.rows.map((report) => {
-                let obj = {
-                    type: report.appointment_type,
-                    date: report.date,
-                    time: report.time,
-                    name: user.rows[0].first_name,
-                    name_pet: userpets.rows[0].name,
-                    phone_number: report.phone_number
-                }
-                array.push(obj)
-            })
-            return response.status(200).json(array);
+    let len = appoint.rows.length
+    for (let index = 0; index < len; index++) {
+        let petName = await client.query('select name from pets where owner_id=$1 AND id=$2', [appoint.rows[index].owner_id, appoint.rows[index].pet_id]);
+        if (petName.rowCount == 0) {
+            return response.status(400).json({ message: "pet is not found" });
         }
-    });
-}
-module.exports = router;
+
+        let user = await client.query('select first_name from users where id=$1', [appoint.rows[index].owner_id]);
+        if (user.rowCount == 0) {
+            return response.status(400).json({ message: "user is not found" });
+        }
+        appoint.rows[index].pet_id = petName.rows[0].name
+        appoint.rows[index].owner_id = user.rows[0].first_name
+    }
