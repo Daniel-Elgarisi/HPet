@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/medical', MakeMedical);
-//router.get('/:phonenumber/:petname', getAllPetReports)
+router.get('/:phonenumber/:petname', getAllPetReports)
 
 
 async function MakeMedical(req, response) {
