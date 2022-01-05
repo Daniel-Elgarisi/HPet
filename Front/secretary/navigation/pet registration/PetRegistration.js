@@ -7,10 +7,12 @@ async function petRegister() {
   let pbirthday = document.getElementById("PetBirthday").value;
   let gender = document.getElementById("Gender").value;
   let type = document.getElementById("Type").value;
+  let ip = sessionStorage.getItem("ip")
+
 
   //fetch
   //call for POST to the url:
-  let response = await fetch('http://localhost:5000/pets/petRegister', {
+  let response = await fetch(`http://${ip}:5000/pets/petRegister`, {
     //post
     method: 'POST',
     headers: {
@@ -18,7 +20,7 @@ async function petRegister() {
     },
     //this is the stuff we refer to as: req.body in the backend!!!!! ------ לבדוק עם דניאל מה לעשות
     body: JSON.stringify({
-      phone: phone,
+      phone_number: phone,
       name: pname,
       breed: breed,
       chip_number: chip,

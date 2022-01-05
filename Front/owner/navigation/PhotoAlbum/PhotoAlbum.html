@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="PhotoAlbum.css" type="text/css">
+</head>
+
+<body>
+    <div class="body-content">
+        <div class="PhotoAlbum">
+            <h2>צפייה באלבום תמונות</h2>
+            <form class="form" method="post" enctype="multipart/form-data" autocomplete="off">
+                <div class="alert alert-error"></div>
+                <input type="text" id="Pname" name="Pet name" placeholder="Pet name" href="#" data-toggle="tooltip" title="הזן את שם חיית המחמד שלך" required /><br>
+            </form>
+            <button onclick="watchAlbum()" href="#" data-toggle="tooltip" title="לאחר הזנת הפרטים לחץ על מנת לצפות באלבום התמונות של חיית המחמד שלך">watch</button><br>
+
+        </div>
+    </div>
+    <iframe id="frame" style="height: 100vh; border: 0;" height="100%" width="100%"></iframe>
+    <script src="PhotoAlbum.js"></script>
+</body>
+
+</html>

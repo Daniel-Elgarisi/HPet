@@ -7,10 +7,12 @@ async function register() {
   let lname = document.getElementById("Lname").value;
   let phone = document.getElementById("Phone").value;
   let role = document.getElementById("Role").value;
+  let ip = sessionStorage.getItem("ip")
+
 
   //fetch
   //call for POST to the url:
-  let response = await fetch('http://localhost:5000/user/register', {
+  let response = await fetch(`http://${ip}:5000/user/register`, {
     //post
     method: 'POST',
     headers: {
@@ -18,12 +20,12 @@ async function register() {
     },
     //this is the stuff we refer to as: req.body in the backend!!!!!
     body: JSON.stringify({
-      username: user,
-      name: name,
-      pass: pass,
+      user_name: user,
+      password: pass,
+      first_name: name,
+      last_name: lname,
       email: email,
-      lname: lname,
-      phone: phone,
+      phone_number: phone,
       role: role
     })
   })
@@ -31,44 +33,4 @@ async function register() {
   let body = await response.json()
 
   alert(body.message)
-}
-
-
-function addPet() {
-  let role = document.getElementById("Role");
-
-  if (role.value == 1) {
-    // alert("this is owner");
-    let button = document.createElement("button");
-    button.innerHTML = "לחץ כאן להוסיף בע''ח"
-    button.setAttribute('onclick', "createMenu()");
-    button.setAttribute("id", "addPet")
-    role.appendChild(button)
-  }
-  else {
-    let mainDiv = document.getElementById("main")
-    let button = document.getElementById("addPet")
-    role.removeChild(button)
-    mainDiv.innerHTML = ""
-  }
-}
-
-function createMenu(){
-  let mainDiv = document.getElementById("main")
-  let div = document.createElement("div")
-  div.innerText = "enter pet details here:"
-  mainDiv.appendChild(div)
-  div.setAttribute("id","div")
-  let name = document.createElement("input")
-  name.setAttribute("type","text")
-  name.setAttribute("placeholder","name")
-  let lastname = document.createElement("input")
-  lastname.setAttribute("type","text")
-  lastname.setAttribute("placeholder"," last name")
-  let something = document.createElement("input")
-  something.setAttribute("type","text")
-  something.setAttribute("placeholder","something")
-  div.appendChild(name)
-  div.appendChild(lastname)
-  div.appendChild(something)
 }

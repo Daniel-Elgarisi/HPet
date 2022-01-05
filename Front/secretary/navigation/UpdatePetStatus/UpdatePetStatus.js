@@ -1,20 +1,19 @@
 let ownerId
-async function deletePet() {
+let ip = sessionStorage.getItem("ip")
+
+async function updateStatus() {
+    let phone = document.getElementById("Phone").value;
     let pname = document.getElementById("Pname").value;
+    let ip = sessionStorage.getItem("ip")
 
     //fetch
     //call for POST to the url:
-    let response = await fetch('http://localhost:5000/pets/deletePet', {
+    let response = await fetch(`http://${ip}:5000/pets/updateStatus/${phone}/${pname}`, {
         //post
-        method: 'DELETE',
+        method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         },
-        //this is the stuff we refer to as: req.body in the backend!!!!!
-        body: JSON.stringify({
-            pname: pname,
-            ownerId: ownerId.data
-        })
     })
     //get data from backend response as json!
     let body = await response.json()
@@ -27,7 +26,7 @@ async function findOwner() {
 
     //fetch
     //call for POST to the url:
-    let response = await fetch('http://localhost:5000/user/getUserByPhone', {
+    let response = await fetch(`http://${ip}:5000/user/getUserByPhone`, {
         //post
         method: 'POST',
         headers: {
