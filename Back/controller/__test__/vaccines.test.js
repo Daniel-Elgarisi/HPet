@@ -58,7 +58,6 @@ describe("POST /vaccines/updateVaccein", () => {
     });
 });
 
-
 describe("GET /vaccines/watchVacc", () => {
     it("It's Ok!", async () => {
         const response = await request(app).get("/vaccines/watchVacc/0528287761/bell");
