@@ -14,10 +14,15 @@ async function getAllPets(req, response) {
 
     client.query(sql, [], (err, res) => {
         if (!err) {
-            response.status(200).json(res.rows)
+            let array = [];
+            res.rows.map((get) => {
+                let obj = { name: get.name, breed: get.breed, gender: get.gender, type: get.type, birthday: get.birthday.toLocaleDateString('he-IL').split('').join(''), status: get.status }
+                array.push(obj)
+            })
+            return response.status(200).json(array);
         } else {
             console.log(err);
-            response.status(400).json({ message: "Somting went wrong" });
+            response.status(400).json({ message: "Error" });
         }
     });
 
@@ -109,7 +114,7 @@ async function addPet(req, response) {
 
 }
 
-async function UpdateStatusePet(req, response) {
+async function UpdatePetStatus(req, response) {
 
     let user = await client.query("select * from users where phone_number=$1", [req.params.phonenumber]);
     if (user.rowCount == 0) {
@@ -148,35 +153,35 @@ async function UpdateStatusePet(req, response) {
 // })
 
 
-// router.post('/findPetIdByName', (req, response) => {
-//     client.query(`SELECT id FROM pets WHERE name=$1 AND owner_id=$2`, [req.body.pname, req.body.ownerId],
-//         (err, res) => {
-//             if (err) {
-//                 response.status(400).contentType('application/json').json({
-//                     "message": "not found!"
-//                 })
-//             }
-//             else {
-//                 try {
-//                     if (res.rows[0]) {
-//                         console.log("owner: ", req.body.ownerId);
-//                         console.log(res);
-//                         console.log(res.rows[0]);
-//                         response.status(200).contentType('application/json').json({
-//                             "message": "ok!",
-//                             "data": res.rows[0].id
-//                         })
-//                     }
-//                 }
-//                 catch {
-//                     response.status(400).contentType('application/json').json({
-//                         "message": "not found!"
-//                     })
-//                 }
+router.post('/findPetIdByName', (req, response) => {
+    client.query(`SELECT id FROM pets WHERE name=$1 AND owner_id=$2`, [req.body.pname, req.body.ownerId],
+        (err, res) => {
+            if (err) {
+                response.status(400).contentType('application/json').json({
+                    "message": "not found!"
+                })
+            }
+            else {
+                try {
+                    if (res.rows[0]) {
+                        console.log("owner: ", req.body.ownerId);
+                        console.log(res);
+                        console.log(res.rows[0]);
+                        response.status(200).contentType('application/json').json({
+                            "message": "ok!",
+                            "data": res.rows[0].id
+                        })
+                    }
+                }
+                catch {
+                    response.status(400).contentType('application/json').json({
+                        "message": "not found!"
+                    })
+                }
 
-//             }
-//         })
-// })
+            }
+        })
+})
 
 
 
