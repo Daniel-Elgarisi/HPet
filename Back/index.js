@@ -31,3 +31,5 @@ app.use('/photo', photoalbum)
 app.listen(port, function () {
     console.log('Server is running..');
 });
+
+module.exports = app
