@@ -1,14 +1,12 @@
 const client = require('../db/db')
 const express = require('express');
-const joi = require('joi');
-const { checkPreferences } = require('joi');
 const router = express.Router();
 
-router.get('/', getAllPets);
+router.get('/watchPatients', getAllPets);
 router.get('/byuser/:phonenumber', getAllPetsByUser);
 router.get('/petbyuser/:phonenumber/:petname', getPet);
-router.post('/', addPet);
-router.get('/:phonenumber/:petname', UpdateStatusePet);
+router.post('/petRegister', addPet);
+router.get('/updateStatus/:phonenumber/:petname', UpdatePetStatus);
 
 async function getAllPets(req, response) {
 
