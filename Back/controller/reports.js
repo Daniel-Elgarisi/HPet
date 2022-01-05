@@ -2,11 +2,11 @@ const client = require('../db/db')
 const express = require('express');
 const router = express.Router();
 
-router.post('/medical', MakeMedical);
-router.get('/:phonenumber/:petname', getAllPetReports)
+router.post('/uploadReport', uploadReport);
+router.get('/viewMedical/:phonenumber/:petname', getAllPetReports)
 
 
-async function MakeMedical(req, response) {
+async function uploadReport(req, response) {
 
     let user = await client.query("select * from users where phone_number=$1", [req.body.phone_number]);
     if (user.rowCount == 0) {
@@ -57,9 +57,13 @@ async function getAllPetReports(req, response) {
             console.log(err);
             return response.status(400).json({ message: "error" });
         } else {
-            let array = [];
+           let array = [];
             res.rows.map((report) => {
-                let obj = { type: report.appoint_type, report: report.report }
+                let obj = {
+                    type: report.appoint_type,
+                    report: report.report,
+                    date: report.date.toLocaleDateString('he-IL').split('').join('')
+                }
                 array.push(obj)
             })
             return response.status(200).json(array);
