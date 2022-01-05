@@ -48,3 +48,16 @@ describe("POST /user/login", () => {
 
     });
 });
+
+describe("POST /user/login", () => {
+    it("It should respond 'Wrong username or password'", async () => {
+        const newUser = await request(app).post("/user/login").send({
+            user_name: 'efrat',
+            password: '123',
+
+        });
+        expect(newUser.body.message).toBe("Wrong username or password");
+        expect(newUser.statusCode).toBe(400);
+
+    });
+});
