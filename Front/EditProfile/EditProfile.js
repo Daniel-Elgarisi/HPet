@@ -4,10 +4,12 @@ async function update() {
     let lname = document.getElementById("Lname").value;
     let email = document.getElementById("Email").value;
     let phone = document.getElementById("Phone").value;
+    let ip = sessionStorage.getItem("ip")
+
 
     //fetch
     //call for POST to the url:
-    let response = await fetch('http://localhost:5000/user/update', {
+    let response = await fetch(`http://${ip}:5000/user/update`, {
         //post
         method: 'PUT',
         headers: {
