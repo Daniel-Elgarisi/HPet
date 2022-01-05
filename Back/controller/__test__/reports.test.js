@@ -78,6 +78,7 @@ describe("GET /reports/viewMedical", () => {
     });
 });
 
+
 describe("GET /reports/viewMedical", () => {
     it("It should respond 'pet is not found'", async () => {
         const response = await request(app).get("/reports/viewMedical/0528287761/bop");
