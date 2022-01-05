@@ -46,3 +46,18 @@ describe("POST /appointments/make", () => {
 
     });
 });
+
+describe("POST /appointments/make", () => {
+    it("It should respond 'Appointment is cell'", async () => {
+        const User = await request(app).post("/appointments/make").send({
+            phone_number: '0528287761',
+            name: 'bell',
+            appointment_type: 'vaccine',
+            time: '2022-01-05 19:30'
+
+        });
+        expect(User.body.message).toBe("Appointment is cell");
+        expect(User.statusCode).toBe(400);
+
+    });
+});
