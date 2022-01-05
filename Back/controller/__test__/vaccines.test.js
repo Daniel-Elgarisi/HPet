@@ -16,3 +16,15 @@ describe("POST /vaccines/updateVaccein", () => {
 
     });
 });
+
+describe("POST /vaccines/updateVaccein", () => {
+    it("It should respond 'Somthing wrong'", async () => {
+        const User = await request(app).post("/vaccines/updateVaccein").send({
+            phone_number: '0528287761',
+            petname: 'bell'
+        });
+        expect(User.body.message).toBe("Somthing wrong");
+        expect(User.statusCode).toBe(400);
+
+    });
+});
