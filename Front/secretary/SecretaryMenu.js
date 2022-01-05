@@ -18,10 +18,10 @@ function nav(choice) {
 
             break;
         case 5:
-            res = "navigation/DeletePet/DeletePet.html"
+            res = "navigation/UpdatePetStatus/UpdatePetStatus.html"
             break;
         case 6:
-            res = "navigation/Vaccines.html"
+            res = "navigation/Vaccines/Vaccines.html"
 
             break;
         case 7:
@@ -29,16 +29,16 @@ function nav(choice) {
 
             break;
         case 8:
-            res = "navigation/Reminder.html"
+            res = "navigation/GetAppointmentMonth/GetAppointmentMonth.html"
 
             break;
         case 9:
-            res = "navigation/CustomerMessage.html"
+            res = "navigation/Patients/Patients.html"
             break;
         case 10:
             sessionStorage.setItem("user", null)
             sessionStorage.setItem("role", null)
-            window.location.href = '../login.html';
+            window.location.href = '../index.html';
             break;
 
     }
