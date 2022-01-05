@@ -57,3 +57,13 @@ describe("POST /vaccines/updateVaccein", () => {
 
     });
 });
+
+
+describe("GET /vaccines/watchVacc", () => {
+    it("It's Ok!", async () => {
+        const response = await request(app).get("/vaccines/watchVacc/0528287761/bell");
+        expect(response.body[0]).toHaveProperty("vaccine_type");
+        expect(response.body[0]).toHaveProperty("date");
+        expect(response.statusCode).toBe(200);
+    });
+});
