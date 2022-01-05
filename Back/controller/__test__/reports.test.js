@@ -77,3 +77,11 @@ describe("GET /reports/viewMedical", () => {
         expect(response.statusCode).toBe(400);
     });
 });
+
+describe("GET /reports/viewMedical", () => {
+    it("It should respond 'pet is not found'", async () => {
+        const response = await request(app).get("/reports/viewMedical/0528287761/bop");
+        expect(response.body.message).toBe("pet is not found");
+        expect(response.statusCode).toBe(400);
+    });
+});
