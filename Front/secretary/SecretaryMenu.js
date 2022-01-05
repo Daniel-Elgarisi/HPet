@@ -2,8 +2,8 @@ function nav(choice) {
     let res;
     switch (choice) {
         case 1:
-            res = "navigation/HomePage/home.html"
-
+            res = "../HomePage/home.html"
+            
             break;
         case 2:
             res = "../EditProfile/EditProfile.html"
