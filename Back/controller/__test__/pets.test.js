@@ -53,3 +53,14 @@ describe("POST /pets/petRegister", () => {
     });
 });
 
+describe("GET /pets/watchPatients", () => {
+    it("It should respond with an array of pets", async () => {
+        const response = await request(app).get("/pets/watchPatients");
+        expect(response.body[0]).toHaveProperty("name");
+        expect(response.body[0]).toHaveProperty("breed");
+        expect(response.body[0]).toHaveProperty("gender");
+        expect(response.body[0]).toHaveProperty("type");
+        expect(response.body[0]).toHaveProperty("birthday");
+        expect(response.statusCode).toBe(200);
+    });
+});
