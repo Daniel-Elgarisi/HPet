@@ -119,3 +119,11 @@ describe("GET /pets/petbyuser", () => {
         expect(response.statusCode).toBe(400);
     });
 });
+
+describe("GET /pets/updateStatus", () => {
+    it("It should respond 'update successfully!'", async () => {
+        const response = await (await request(app).get("/pets/updateStatus/0528287761/bell"));
+        expect(response.body.message).toBe("update successfully!");
+        expect(response.statusCode).toBe(200);
+    });
+});
