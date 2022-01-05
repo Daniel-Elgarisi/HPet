@@ -61,3 +61,17 @@ describe("POST /appointments/make", () => {
 
     });
 });
+
+// describe("DELETE /appointments/delete", () => {
+//     it("It should respond 'deleted'", async () => {
+//         const User = await request(app).delete("/appointments/delete").send({
+//             phonenumber: '0528287761',
+//             petname: 'bell',
+//             time: '2022-01-22 19:30'
+
+//         });
+//         expect(User.body.message).toBe("deleted");
+//         expect(User.statusCode).toBe(200);
+
+//     });
+// });
