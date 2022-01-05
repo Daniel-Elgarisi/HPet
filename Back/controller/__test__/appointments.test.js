@@ -103,3 +103,17 @@ describe("DELETE /appointments/delete", () => {
 
     });
 });
+
+describe("DELETE /appointments/delete", () => {
+    it("It should respond 'appointment is not found'", async () => {
+        const User = await request(app).delete("/appointments/delete").send({
+            phonenumber: '0528287761',
+            petname: 'bell',
+            time: '2022-01-04 19:30'
+
+        });
+        expect(User.body.message).toBe("appointment is not found");
+        expect(User.statusCode).toBe(400);
+
+    });
+});
