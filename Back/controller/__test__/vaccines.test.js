@@ -28,3 +28,17 @@ describe("POST /vaccines/updateVaccein", () => {
 
     });
 });
+
+describe("POST /vaccines/updateVaccein", () => {
+    it("It should respond 'user is not found'", async () => {
+        const User = await request(app).post("/vaccines/updateVaccein").send({
+            phone_number: '0528287768',
+            petname: 'bell',
+            vaccine_type: 'משושה 1',
+
+        });
+        expect(User.body.message).toBe("user is not found");
+        expect(User.statusCode).toBe(400);
+
+    });
+});
