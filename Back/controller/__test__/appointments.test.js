@@ -90,3 +90,16 @@ describe("DELETE /appointments/delete", () => {
     });
 });
 
+describe("DELETE /appointments/delete", () => {
+    it("It should respond 'pet is not found'", async () => {
+        const User = await request(app).delete("/appointments/delete").send({
+            phonenumber: '0528287761',
+            petname: 'bl',
+            time: '2022-01-05 19:30'
+
+        });
+        expect(User.body.message).toBe("pet is not found");
+        expect(User.statusCode).toBe(400);
+
+    });
+});
