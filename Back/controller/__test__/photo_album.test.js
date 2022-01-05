@@ -18,3 +18,11 @@ describe("GET /photo/watchAlbum", () => {
         expect(response.statusCode).toBe(400);
     });
 });
+
+describe("GET /photo/watchAlbum", () => {
+    it("It should respond 'pet is not found'", async () => {
+        const response = await request(app).get("/photo/watchAlbum/0528287761/sos");
+        expect(response.body.message).toBe("pet is not found");
+        expect(response.statusCode).toBe(400);
+    });
+});
