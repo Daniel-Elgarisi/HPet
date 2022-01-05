@@ -75,3 +75,18 @@ describe("POST /appointments/make", () => {
 
 //     });
 // });
+
+describe("DELETE /appointments/delete", () => {
+    it("It should respond 'user is not found'", async () => {
+        const User = await request(app).delete("/appointments/delete").send({
+            phonenumber: '0528287768',
+            petname: 'bell',
+            time: '2022-01-05 19:30'
+
+        });
+        expect(User.body.message).toBe("user is not found");
+        expect(User.statusCode).toBe(400);
+
+    });
+});
+
