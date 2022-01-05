@@ -42,3 +42,18 @@ describe("POST /vaccines/updateVaccein", () => {
 
     });
 });
+
+describe("POST /vaccines/updateVaccein", () => {
+    it("It should respond 'pet is not found'", async () => {
+        const User = await request(app).post("/vaccines/updateVaccein").send({
+
+            phone_number: '0528287761',
+            petname: 'sos',
+            vaccine_type: 'משושה 1',
+
+        });
+        expect(User.body.message).toBe("pet is not found");
+        expect(User.statusCode).toBe(400);
+
+    });
+});
