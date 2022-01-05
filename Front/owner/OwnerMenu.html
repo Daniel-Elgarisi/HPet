@@ -2,23 +2,41 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="OWnerMenu.css">
+    <link rel="stylesheet" type="text/css" href="OwnerMenu.css">
+    <meta charset="utf-8" />
     <title>HPet Menu Page</title>
 </head>
 
 <body>
     <h1>HPet Menu Page</h1>
     <nav>
-        <a onclick="nav(1)">דף הבית</a>
-        <a onclick="nav(2)">עריכת פרופיל</a>
-        <a onclick="nav(3)">רפואה דחופה</a>
-        <a onclick="nav(4)">זימון תורים</a>
-        <a onclick="nav(5)">ביטול תורים</a>
-        <a onclick="nav(6)">מעבדה</a>
-        <a onclick="nav(7)">הפניות</a>
-        <a onclick="nav(8)">אלבום תמונות</a>
-        <a onclick="nav(9)">קבלות</a>
-        <a onclick="nav(10)">LogOut</a>
+        <a onclick="nav(1)" href="#" data-toggle="tooltip" title="מעבר לדף הבית"
+        >דף הבית</a>
+
+        <a onclick="nav(2)" href="#" data-toggle="tooltip" title="עדכון פרטיך האישיים במערכת"
+        >עריכת פרופיל</a>
+
+        <a onclick="nav(3)" href="#" data-toggle="tooltip" title="יצירת קשר במקרה חירום רפואי"
+        >רפואה דחופה</a>
+
+        <a onclick="nav(4)" href="#" data-toggle="tooltip" title="זימון תור לחיית המחמד"
+        >זימון תורים</a>
+
+        <a onclick="nav(5)" href="#" data-toggle="tooltip" title="ביטול תור קיים לחיית המחמד"
+        >ביטול תורים</a>
+
+        <a onclick="nav(6)" href="#" data-toggle="tooltip" title='צפייה בד"וחות רפואיים של חיית המחמד'
+        >צפייה בתיק רפואי</a>
+
+        <a onclick="nav(7)" href="#" data-toggle="tooltip" title="צפייה בפנקס החיסונים של חיית המחמד"
+        >צפייה בפנקס חיסונים</a>
+
+        <a onclick="nav(8)" href="#" data-toggle="tooltip" title="צפייה באלבום תמונות של חיית המחמד"
+        >צפייה אלבום תמונות</a>
+
+        <a onclick="nav(9)" href="#" data-toggle="tooltip" title="יציאה מהמערכת"
+        >LogOut</a>
+
         <div class="animation start-home"></div>
     </nav>
     <iframe id="frame" style="height: 100vh; border: 0;" height="100%" width="100%"></iframe>

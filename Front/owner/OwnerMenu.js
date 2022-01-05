@@ -19,21 +19,18 @@ function nav(choice) {
             res = "navigation/DeleteAppointment/DelAppointment.html"
             break;
             case 6:
-            res = "navigation/Summaries.html"
+            res = "navigation/ViewMedicalReport/ViewMedicalReport.html"
             break;
         case 7:
-            res = "navigation/References.html"
+            res = "navigation/Vaccines/Vaccines.html"
             break;
         case 8:
-            res = "navigation/PhotoAlbum.html"
+            res = "navigation/PhotoAlbum/PhotoAlbum.html"
             break;
         case 9:
-            res = "navigation/Receipts.html"
-            break;
-        case 10:
             sessionStorage.setItem("user", null)
             sessionStorage.setItem("role", null)
-            window.location.href = '../login.html';
+            window.location.href = '../index.html';
             break;
 
     }
