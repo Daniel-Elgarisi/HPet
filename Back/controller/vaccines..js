@@ -2,8 +2,8 @@ const client = require('../db/db')
 const express = require('express');
 const router = express.Router();
 
-router.get('/:phonenumber/:petname', getVaccines);
-router.post('/', updateVaccines);
+router.get('/watchVacc/:phonenumber/:petname', getVaccines);
+router.post('/updateVaccein', updateVaccines);
 
 async function getVaccines(req, response) {
 
@@ -27,7 +27,7 @@ async function getVaccines(req, response) {
         } else {
             let array = [];
             res.rows.map((vac) => {
-                let obj = { vaccine_type: vac.vaccine_type, date: vac.date.toLocaleDateString('en-GB').split('').join('') }
+               let obj = { vaccine_type: vaccantions.vaccine_type, date: vaccantions.date.toLocaleDateString('he-IL').split('').join('') }
                 array.push(obj)
             })
             return response.status(200).json(array);
