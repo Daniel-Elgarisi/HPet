@@ -18,3 +18,20 @@ const app = require('../../index')
 
 //     });
 // });
+
+describe("POST /user/register", () => {
+    it("It should respond 'Existing username or existing email or existing cell phone number'", async () => {
+        const newUser = await request(app).post("/user/register").send({
+            user_name: 'daniel12',
+            password: '1234',
+            first_name: 'daniel',
+            last_name: 'grounin',
+            email: 'daniel12@gmail.com',
+            phone_number: '0528287761',
+            role: 1
+        });
+        expect(newUser.body.message).toBe("Existing username or existing email or existing cell phone number");
+        expect(newUser.statusCode).toBe(400);
+
+    });
+});
