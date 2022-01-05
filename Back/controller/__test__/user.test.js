@@ -35,3 +35,16 @@ describe("POST /user/register", () => {
 
     });
 });
+
+describe("POST /user/login", () => {
+    it("It should respond 'login ok!'", async () => {
+        const User = await request(app).post("/user/login").send({
+            username: 'efrat',
+            password: '123456',
+
+        });
+        expect(User.body.message).toBe("login ok!");
+        expect(User.statusCode).toBe(200);
+
+    });
+});
