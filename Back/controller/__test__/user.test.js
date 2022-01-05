@@ -76,3 +76,18 @@ describe("PUT /user/update", () => {
 
     });
 });
+
+describe("PUT /user/update", () => {
+    it("It should respond 'email exist'", async () => {
+        const newUser = await request(app).put("/user/update").send({
+            name: 'efrat',
+            lname: 'kadosh',
+            email: 'yovel@gmail.com',
+            phone: '0526640140',
+            currentUser: 'efrat'
+        });
+        expect(newUser.body.message).toBe("email exist");
+        expect(newUser.statusCode).toBe(400);
+
+    });
+});
