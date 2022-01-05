@@ -3,7 +3,7 @@ body
     margin: 0;  
     padding: 0;  
     background-color:#ffffff;  
-    font-family: 'Century Gothic';  
+    font-family: 'Century Gothic', cursive; 
 }  
 .login{  
         width: 350px;  
@@ -21,15 +21,14 @@ body
 }  
 
 
-h2{  
+h1{  
     text-align: center;  
     color: #277582;  
-    padding: 10px;  
+    padding: 10px; 
+    font-family: 'Century Gothic', cursive;
+    color: #000000; 
 }  
-label{  
-    color: #337c6f;  
-    font-size: 17px;  
-}  
+  
 #Uname{  
     width: 300px;  
     height: 30px;  
@@ -40,6 +39,8 @@ label{
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 5px rgba(8,7,16,0.6);
     background-color: rgba(255, 255, 255, 0.925);
+    font-family: 'Century Gothic', cursive;
+    color: #000000;
 } 
  
 #Pass{  
@@ -52,6 +53,8 @@ label{
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 5px rgba(8,7,16,0.6);
     background-color: rgba(255, 255, 255, 0.925);
+    font-family: 'Century Gothic', cursive;
+    color: #000000;
       
 }  
 
@@ -78,8 +81,8 @@ button{
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 5px rgba(8,7,16,0.6);
     border: 2px solid rgba(255,255,255,0.1);
-    
-     
+    font-family: 'Century Gothic', cursive;
+    color: #000000; 
 }
 
 span{  
