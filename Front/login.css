@@ -2,40 +2,34 @@ body
 {  
     margin: 0;  
     padding: 0;  
-    /* background-color:#c5b298;   */
-    font-family: 'Century Gothic';  
-    background-image: url("editProfileBackground.png"); 
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    background-size: cover;
+    background-color:#ffffff;  
+    font-family: 'Century Gothic', cursive; 
 }  
-.update{  
+.login{  
         width: 350px;  
         overflow:hidden;  
         margin: auto;  
         margin: 20 0 0 500px;  
         padding: 20px;  
-        background: #ffffff98;  
+        background: #d3bda0;  
         border-radius: 50px ;  
         position: absolute;
-        top: 10%;
-        left: 42%;   
-        border: 3px solid rgba(73, 52, 38, 0.411);
+        top: 35%;
+        left: 35%;   
+        border: 6px solid rgba(54, 23, 6, 0.26);
         box-shadow: 0 0 40px rgba(8,7,16,0.6);     
 }  
 
 
-h2{  
-    font-family: 'Segoe UI Semibold'; 
+h1{  
     text-align: center;  
-    color: #000000;  
-    padding: 3px;  
+    color: #277582;  
+    padding: 10px; 
+    font-family: 'Century Gothic', cursive;
+    color: #000000; 
 }  
-label{  
-    color: #337c6f;  
-    font-size: 17px;  
-}  
-#Name{  
+  
+#Uname{  
     width: 300px;  
     height: 30px;  
     border: none;  
@@ -48,21 +42,6 @@ label{
     font-family: 'Century Gothic', cursive;
     color: #000000;
 } 
-
-#Lname{
-    width: 300px;  
-    height: 30px;  
-    border: none;  
-    border-radius: 8px;  
-    padding: 3px;
-    margin: 5px; 
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 5px rgba(8,7,16,0.6);
-    background-color: rgba(255, 255, 255, 0.925);
-    font-family: 'Century Gothic', cursive;
-    color: #000000;
-} 
-
  
 #Pass{  
     width: 300px;  
@@ -76,52 +55,34 @@ label{
     background-color: rgba(255, 255, 255, 0.925);
     font-family: 'Century Gothic', cursive;
     color: #000000;
+      
 }  
 
-#Email{  
+#log{  
     width: 300px;  
     height: 30px;  
     border: none;  
-    border-radius: 8px;  
-    padding: 3px;  
-    margin: 5px;
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 5px rgba(8,7,16,0.6);
-    background-color: rgba(255, 255, 255, 0.925);
-    font-family: 'Century Gothic', cursive; 
-    color: #000000;
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: rgb(255, 187, 0);   
 }  
-
-#Phone{  
-    width: 300px;  
-    height: 30px;  
-    border: none;  
-    border-radius: 8px;  
-    padding: 3px;  
-    margin: 5px;
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 5px rgba(8,7,16,0.6);
-    background-color: rgba(255, 255, 255, 0.925);
-    font-family: 'Century Gothic', cursive;
-    color: #000000;
-}
 
 button{  
     margin-top: 5px;
     width: 30%;
     background-color: #ffffff;
-    color: #000000;
+    color: #080710;
     padding: 4px 0;
     font-size: 14px;
     font-weight: 70;
     border-radius: 30px;
     cursor: pointer;    
-    font-family: 'Century Gothic', cursive;
+    font-family: 'Century Gothic';   
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 5px rgba(8,7,16,0.6);
     border: 2px solid rgba(255,255,255,0.1);
-    width: 30%;
-    margin-left: 30%;
+    font-family: 'Century Gothic', cursive;
+    color: #000000; 
 }
 
 span{  

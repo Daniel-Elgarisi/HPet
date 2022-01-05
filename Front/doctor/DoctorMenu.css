@@ -32,92 +32,87 @@ nav .animation {
 	border-radius: 8px;
 }
 a:nth-child(1) {
-	width: 100px;
-}
-a:nth-child(2) {
 	width: 110px;
 }
+a:nth-child(2) {
+	width: 135px;
+}
 a:nth-child(3) {
-	width: 100px;
+	width: 125px;
 }
 a:nth-child(4) {
-	width: 160px;
+	width: 125px;
 }
 a:nth-child(5) {
-	width: 120px;
+	width: 145px;
 }
 a:nth-child(6){
-    width: 120px;
+    width: 125px;
 }
 a:nth-child(7){
-    width: 120px;
+    width: 165px;
 }
 a:nth-child(8){
-    width: 120px;
+    width: 150px;
 }
 a:nth-child(9){
-    width: 120px;
-}
-a:nth-child(10){
-    width: 120px;
+    width: 110px;
 }
 
 nav .start-home, a:nth-child(1):hover~.animation {
-	width: 100px;
+	width: 110px;
 	left: 0;
 	background-color: #e09191;
 }
 nav .start-about, a:nth-child(2):hover~.animation {
-	width: 110px;
-	left: 100px;
+	width: 135px;
+	left: 110px;
     font-family: 'Century Gothic'; 
 	background-color: #a84981;
 }
 nav .start-blog, a:nth-child(3):hover~.animation {
-	width: 100px;
-	left: 210px;
+	width: 125px;
+	left: 245px;
 	background-color: #8843a8;
 }
 nav .start-portefolio, a:nth-child(4):hover~.animation {
-	width: 160px;
-	left: 310px;
+	width: 125px;
+	left: 370px;
 	background-color: #5643a8;
 }
 nav .start-contact, a:nth-child(5):hover~.animation {
-	width: 120px;
-	left: 470px;
+	width: 145px;
+	left: 495px;
 	background-color: #4388a8;
 }
 nav .start-contact, a:nth-child(6):hover~.animation {
-        width: 110px;
-        left: 595px;
+        width: 125px;
+        left: 640px;
         background-color: #43a897;
 }
 nav .start-contact, a:nth-child(7):hover~.animation {
-	width: 110px;
-	left: 715px;
+	width: 165px;
+	left: 765px;
 	background-color: #43a86d;
 }
 nav .start-contact, a:nth-child(8):hover~.animation {
-	width: 130px;
-	left: 825px;
+	width: 150px;
+	left: 930px;
 	background-color: #5ba843;
 }
 nav .start-contact, a:nth-child(9):hover~.animation {
 	width: 110px;
-	left: 960px;
+	left: 1080px;
 	background-color: #a8a643;
-}
-nav .start-contact, a:nth-child(10):hover~.animation {
-	width:120px;
-	left: 1075px;
-	background-color: #a87443;
 }
 
 body {
 	font-size: 12px;
 	font-family: sans-serif;
-	background: #b49776c0;
+	background-image: url("Untitled.png"); 
+	background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
 }
 h1 {
 	text-align: center;

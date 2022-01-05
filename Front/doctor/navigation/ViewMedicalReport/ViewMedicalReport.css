@@ -2,47 +2,41 @@ body
 {  
     margin: 0;  
     padding: 0;  
-    background-color:#ffffff;  
-    font-family: 'Century Gothic';  
+    background-image: url("reportBackground.png"); 
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    font-family: 'Segoe UI Semibold';
+    text-align: center;
 }  
-.login{  
+.vaccines{  
         width: 350px;  
         overflow:hidden;  
         margin: auto;  
         margin: 20 0 0 500px;  
         padding: 20px;  
-        background: #d3bda0;  
+        background: #ece6dea4;  
         border-radius: 50px ;  
         position: absolute;
-        top: 35%;
-        left: 35%;   
-        border: 6px solid rgba(54, 23, 6, 0.26);
+        top: 5%;
+        left: 42%;   
+        border: 3px solid rgba(73, 52, 38, 0.411);
         box-shadow: 0 0 40px rgba(8,7,16,0.6);     
 }  
 
 
 h2{  
     text-align: center;  
-    color: #277582;  
+    color: #000000;  
     padding: 10px;  
 }  
 label{  
-    color: #337c6f;  
-    font-size: 17px;  
-}  
-#Uname{  
-    width: 300px;  
-    height: 30px;  
-    border: none;  
-    border-radius: 8px;  
-    padding: 3px;
-    margin: 5px; 
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 5px rgba(8,7,16,0.6);
-    background-color: rgba(255, 255, 255, 0.925);
-} 
- 
-#Pass{  
+    color: #000000;  
+    font-size: 16px;  
+    font-family: 'Century Gothic';
+}
+
+#Phone{  
     width: 300px;  
     height: 30px;  
     border: none;  
@@ -52,17 +46,25 @@ label{
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 5px rgba(8,7,16,0.6);
     background-color: rgba(255, 255, 255, 0.925);
+    font-family: 'Century Gothic';
+    font-size: 15.1px;
       
-}  
+}
 
-#log{  
-    width: 300px;  
-    height: 30px;  
-    border: none;  
-    border-radius: 17px;  
-    padding-left: 7px;  
-    color: rgb(255, 187, 0);   
-}  
+#Pname{  
+  width: 300px;  
+  height: 30px;  
+  border: none;  
+  border-radius: 8px;  
+  padding: 3px;  
+  margin: 5px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 5px rgba(8,7,16,0.6);
+  background-color: rgba(255, 255, 255, 0.925);
+  font-family: 'Century Gothic';
+  font-size: 15.1px;
+    
+}
 
 button{  
     margin-top: 5px;
@@ -78,8 +80,7 @@ button{
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 5px rgba(8,7,16,0.6);
     border: 2px solid rgba(255,255,255,0.1);
-    
-     
+    font-size: 15.1px;   
 }
 
 span{  
@@ -89,4 +90,9 @@ span{
 a{  
     float: left;  
     background-color: grey;  
-}  
+}
+
+#tbe{
+    margin-left: auto;
+    margin-right: auto;
+}

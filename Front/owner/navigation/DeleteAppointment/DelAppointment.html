@@ -15,22 +15,21 @@
       <p><h2>ביטול  <br>תור</h2></p>
       <form class="form" autocomplete="off">
         <div class="alert alert-error"></div>
-        <input type="tel" id="Phone" name="Phone" placeholder="Pet Owner Phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-        required><br>
-        <input type="text" id="PetName" placeholder="Pet Name" name="petName" required /><br><br>
+        <input type="tel" id="Phone" name="Phone" placeholder="Pet Owner Phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" href="#" data-toggle="tooltip" title="הזן מספר טלפון" required><br>
+        <input type="text" id="PetName" placeholder="Pet Name" name="petName" href="#" data-toggle="tooltip" title="הזן שם חיית המחמד" required /><br><br>
         <label for="appointment type">Appointment type:</label>
-        <select id="AppType" placeholder="Appointment type:" name="appointment type">
+        <select id="AppType" placeholder="Appointment type:" name="appointment type" href="#" data-toggle="tooltip" title="בחר את סוג התור אותו ברצונך לבטל">
           <option value="vaccine">vaccine</option>
           <option value="lab">lab</option>
           <option value="emergency">emergency</option>
           <option value="regular">regular</option>
         </select>
-        <br><input onfocusout="updateHours()" type="text" id="date" class="form-control datepicker" placeholder="Appointment date:" name="appointmentDate" autocomplete="off"><br>
+        <br><input onfocusout="updateHours()" type="text" id="date" class="form-control datepicker" placeholder="Appointment date:" name="appointmentDate" autocomplete="off" href="#" data-toggle="tooltip" title="בחר את תאריך התור שברצונך לבטל"><br>
         <label for="time">Appointment time:</label>
-        <select id="time" placeholder="Appointment time:" name="time">
+        <select id="time" placeholder="Appointment time:" name="time" href="#" data-toggle="tooltip" title="בחר את שעת התור שברצונך לבטל">
         </select>
       </form>
-      <br><button onclick="deleteAppointment()">delete</button><br>
+      <br><button onclick="deleteAppointment()" href="#" data-toggle="tooltip" title="לחץ כאן לאחר הזנת הפרטים על מנת לבטל את התור">delete</button><br>
     </div>
   </div>
 </body>

@@ -11,27 +11,24 @@ function nav(choice) {
             res = "navigation/MedicalReport/MedicalReport.html"
             break;
         case 4:
-            res = "navigation/medicalfile.html"
+            res = "navigation/ViewMedicalReport/ViewMedicalReport.html"
             break;
         case 5:
-            res = "navigation/Prescriptions.html"
+            res = "navigation/GetAppointmentDay/GetAppointmentDay.html"
             break;
         case 6:
-            res = "navigation/References.html"
+            res = "navigation/Patients/Patients.html"
             break;
         case 7:
-            res = "navigation/labResults.html"
-            break;
-        case 8:
             res = "navigation/Vaccnations/Vaccination.html"
             break;
-        case 9:
-            res = "navigation/Vaccines.html"
+        case 8:
+            res = "navigation/Vaccines/Vaccines.html"
             break;
-        case 10:
+        case 9:
             sessionStorage.setItem("user", null)
             sessionStorage.setItem("role", null)
-            window.location.href = '../login.html';
+            window.location.href = '../index.html';
             break;
 
     }

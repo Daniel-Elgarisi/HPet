@@ -2,11 +2,14 @@ body
 {  
     margin: 0;  
     padding: 0;  
-    background-color:#d3bda0;  
+    background-image: url("communicationBackground.png"); 
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
     font-family: 'Segoe UI Semibold';
     text-align: center;
 }  
-.vaccein{  
+.MedicalReport{  
         width: 350px;  
         overflow:hidden;  
         margin: auto;  
@@ -15,8 +18,8 @@ body
         background: #ece6dea4;  
         border-radius: 50px ;  
         position: absolute;
-        top: 15%;
-        left: 35%;   
+        top: 5%;
+        left: 42%;   
         border: 3px solid rgba(73, 52, 38, 0.411);
         box-shadow: 0 0 40px rgba(8,7,16,0.6);     
 }  
@@ -24,12 +27,13 @@ body
 
 h2{  
     text-align: center;  
-    color: #277582;  
+    color: #000000;  
     padding: 10px;  
 }  
 label{  
-    color: #337c6f;  
-    font-size: 17px;  
+    color: #000000;  
+    font-size: 16px;  
+    font-family: 'Century Gothic';
 }
 
 #Phone{  
@@ -42,6 +46,8 @@ label{
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 5px rgba(8,7,16,0.6);
     background-color: rgba(255, 255, 255, 0.925);
+    font-family: 'Century Gothic';
+    font-size: 15.1px;
       
 }
 
@@ -55,11 +61,14 @@ label{
   border: 2px solid rgba(255,255,255,0.1);
   box-shadow: 0 0 5px rgba(8,7,16,0.6);
   background-color: rgba(255, 255, 255, 0.925);
+  font-family: 'Century Gothic';
+  font-size: 15.1px;
     
 }
 
-#Vacceins{
-    width: 300px;  
+
+#AppType{
+  width: 300px;  
   height: 30px;  
   border: none;  
   border-radius: 8px;  
@@ -68,6 +77,8 @@ label{
   border: 2px solid rgba(255,255,255,0.1);
   box-shadow: 0 0 5px rgba(8,7,16,0.6);
   background-color: rgba(255, 255, 255, 0.925);
+  font-family: 'Century Gothic';
+  font-size: 15.1px;
 }
 
 button{  
@@ -84,8 +95,7 @@ button{
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 5px rgba(8,7,16,0.6);
     border: 2px solid rgba(255,255,255,0.1);
-    
-     
+    font-size: 15.1px; 
 }
 
 span{  
@@ -96,3 +106,17 @@ a{
     float: left;  
     background-color: grey;  
 }  
+
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 5px rgba(8,7,16,0.6);
+    font-size: .8rem;
+    letter-spacing: 1px;
+    font-family: 'Segoe UI Semibold'; 
+    width: 280px;
+    height: 130px;
+}

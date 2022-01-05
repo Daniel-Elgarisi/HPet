@@ -7,9 +7,10 @@ async function uploadReport() {
     let pname = document.getElementById("Pname").value;
     let appointmentType = document.getElementById("AppType").value;
     let report = document.getElementById("Report").value;
+    let ip = sessionStorage.getItem("ip")
     //fetch
     //call for POST to the url:
-    let response = await fetch(`http://localhost:5000/reports/uploadReport`,{
+    let response = await fetch(`http://${ip}:5000/reports/uploadReport`,{
       //post
       method: 'POST',
       headers: {
@@ -25,15 +26,17 @@ async function uploadReport() {
     })
     //get data from backend response as jsson!
     let body = await response.json()
-  
+    
+    alert(body.message)
     console.log(body.message);
   }
 
 async function findPetIdByName() {
+  let ip = sessionStorage.getItem("ip")
 
     //fetch
     //call for POST to the url:
-    let response = await fetch('http://localhost:5000/pets/findPetIdByName', {
+    let response = await fetch(`http://${ip}:5000/pets/findPetIdByName`, {
         //post
         method: 'POST',
         headers: {
@@ -51,10 +54,11 @@ async function findPetIdByName() {
 
 
 async function findOwner() {
+  let ip = sessionStorage.getItem("ip")
 
     //fetch
     //call for POST to the url:
-    let response = await fetch('http://localhost:5000/user/getUserByPhone', {
+    let response = await fetch(`http://${ip}:5000/user/getUserByPhone`, {
         //post
         method: 'POST',
         headers: {
@@ -67,12 +71,4 @@ async function findOwner() {
     })
     //get data from backend response as json!
     ownerId = await response.json()
-    // let x = document.getElementById("Pname");
-    // if (ownerId.data) {
-    //     x.removeAttribute("disabled");
-    // }
-    // else{
-    //     x.setAttribute("disabled", "");
-    // }
-    // console.log(ownerId);
 }
