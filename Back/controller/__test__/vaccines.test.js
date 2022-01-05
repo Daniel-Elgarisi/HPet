@@ -75,3 +75,11 @@ describe("GET /vaccines/watchVacc", () => {
         expect(response.statusCode).toBe(400);
     });
 });
+
+describe("GET /vaccines/watchVacc", () => {
+    it("user is not found", async () => {
+        const response = await request(app).get("/vaccines/watchVacc/0528287771/bell");
+        expect(response.body.message).toBe("user is not found");
+        expect(response.statusCode).toBe(400);
+    });
+});
