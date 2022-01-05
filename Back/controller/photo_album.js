@@ -2,7 +2,7 @@ const client = require('../db/db')
 const express = require('express');
 const router = express.Router();
 
-router.get('/:phonenumber/:petname', getURL);
+router.get('/watchAlbum/:phonenumber/:petname', getURL);
 
 async function getURL(req, response) {
     let user = await client.query("select * from users where phone_number=$1", [req.params.phonenumber]);
