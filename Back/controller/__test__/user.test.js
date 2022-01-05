@@ -61,3 +61,18 @@ describe("POST /user/login", () => {
 
     });
 });
+
+describe("PUT /user/update", () => {
+    it("It should respond 'edit failed!'", async () => {
+        const newUser = await request(app).put("/user/update").send({
+            name: 'efrat',
+            lname: 'kadosh',
+            email: 'efrat@gmail.com',
+            phone: '0528287761',
+            currentUser: 'efrat'
+        });
+        expect(newUser.body.message).toBe("phone number exist");
+        expect(newUser.statusCode).toBe(400);
+
+    });
+});
