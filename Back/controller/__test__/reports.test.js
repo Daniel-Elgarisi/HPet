@@ -70,3 +70,10 @@ describe("GET /reports/viewMedical", () => {
     });
 });
 
+describe("GET /reports/viewMedical", () => {
+    it("It should respond 'user is not found'", async () => {
+        const response = await request(app).get("/reports/viewMedical/0528287721/bell");
+        expect(response.body.message).toBe("user is not found");
+        expect(response.statusCode).toBe(400);
+    });
+});
