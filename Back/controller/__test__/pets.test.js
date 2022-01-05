@@ -79,3 +79,11 @@ describe("GET /pets/byuser", () => {
         expect(response.statusCode).toBe(200);
     });
 });
+
+describe("GET /pets/byuser", () => {
+    it("It should respond 'user is not found'", async () => {
+        const response = await (await request(app).get("/pets/byuser/0528287768"));
+        expect(response.body.message).toBe("user is not found");
+        expect(response.statusCode).toBe(400);
+    });
+});
