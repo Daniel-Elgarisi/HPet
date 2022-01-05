@@ -10,3 +10,11 @@ describe("GET /photo/watchAlbum", () => {
         expect(response.statusCode).toBe(200);
     });
 });
+
+describe("GET /photo/watchAlbum", () => {
+    it("It should respond 'user is not found'", async () => {
+        const response = await request(app).get("/photo/watchAlbum/0528287771/bell");
+        expect(response.body.message).toBe("user is not found");
+        expect(response.statusCode).toBe(400);
+    });
+});
