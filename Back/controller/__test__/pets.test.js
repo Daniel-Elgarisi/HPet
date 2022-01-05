@@ -87,3 +87,17 @@ describe("GET /pets/byuser", () => {
         expect(response.statusCode).toBe(400);
     });
 });
+
+describe("GET /pets/petbyuser", () => {
+    it("It should respond with an array of pets", async () => {
+        const response = await (await request(app).get("/pets/petbyuser/0528287761/bll"));
+        expect(response.body[0]).toHaveProperty("id");
+        expect(response.body[0]).toHaveProperty("name");
+        expect(response.body[0]).toHaveProperty("breed");
+        expect(response.body[0]).toHaveProperty("chip_number");
+        expect(response.body[0]).toHaveProperty("birthday");
+        expect(response.body[0]).toHaveProperty("gender");
+        expect(response.body[0]).toHaveProperty("type");
+        expect(response.statusCode).toBe(200);
+    });
+});
