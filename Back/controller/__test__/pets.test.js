@@ -127,3 +127,11 @@ describe("GET /pets/updateStatus", () => {
         expect(response.statusCode).toBe(200);
     });
 });
+
+describe("GET /pets/updateStatus", () => {
+    it("It should respond 'pet is not exist'", async () => {
+        const response = await (await request(app).get("/pets/updateStatus/0528287761/rotem"));
+        expect(response.body.message).toBe("pet is not exist");
+        expect(response.statusCode).toBe(400);
+    });
+});
