@@ -36,3 +36,20 @@ describe("POST /pets/petRegister", () => {
     });
 });
 
+describe("POST /pets/petRegister", () => {
+    it("It should respond 'user is not found'", async () => {
+        const newPet = await request(app).post("/pets/petRegister").send({
+            phone_number: '0528287768',
+            name: 'we',
+            breed: 'milow',
+            chip_number: '',
+            birthday: '11/02/2009',
+            gender: 'famle',
+            type: 'dog'
+        });
+        expect(newPet.body.message).toBe("user is not found");
+        expect(newPet.statusCode).toBe(400);
+
+    });
+});
+
