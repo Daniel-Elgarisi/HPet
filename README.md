@@ -1,9 +1,6 @@
 # HPet
 
-![alt text](https://s10.gifyu.com/images/Hpet.gif)
-<img src="https://s10.gifyu.com/images/Hpet.gif">
-![](Hpet.gif)
-
+![alt text](https://media.giphy.com/media/cdeB7GSfa6KWKPKfIS/giphy.gif)
 
 Hpet Application - cloud architecture:
 our app is made of three parts, this overview will explain how
