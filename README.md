@@ -1,20 +1,27 @@
 # HPet
-This application is based on 3 technologies:
-backend based on node.js:
-   - to run this part node.js and npm are needed: https://nodejs.org/en/download
-   - to install dependencies:
-      - open cmd
-      - cd to back folder of the project: cd {project_path}/back
-      - run npm install
 
-database is postgres sql:
-   - to use it postgresql is needed, we recommend on using pgadmin: https://www.pgadmin.org/download
-   - a backup of the database is saved in the back folder of the project
-      - restore the database1.tar file using pgadmin: https://www.pgadmin.org/docs/pgadmin4/development/restore_dialog.html
-   - update database connection object in {project_folder}/back/db/db.js,
-     with the correct patrameter(your password and db name if changed, host will remain localhost)
+![alt text](https://s10.gifyu.com/images/Hpet.gif)
+<img src="https://s10.gifyu.com/images/Hpet.gif">
+![](Hpet.gif)
 
-frontend based on vanilla javascript:
-   - to run this part a web browser is needed, we recommend on using chrome: https://www.google.com/chrome
-   - start file login.js in path: {project_folder}/front/login.js to start the app.
 
+Hpet Application - cloud architecture:
+our app is made of three parts, this overview will explain how
+every part is deployed on the aws cloud to enable online usage of the app.
+
+Database:
+We use Postgresql as our app's database.
+it is hosted on an ec2 instance with linux operating system.
+To enable http communication the instance has Public ip.
+
+Backend rest api:
+We used Node.js to run express server as our backend.
+it is hosted on the same ec2 instance as our database,
+with port 5000 open to enable the front to communicate with the rest api.
+
+Frontend:
+We used vanilla javascript to write static pages as our app's frontend.
+It is hosted on a publicly accessible S3 bucket.
+
+### the address for our frontend is:
+### http://yosodot.s3-website.eu-central-1.amazonaws.com/
